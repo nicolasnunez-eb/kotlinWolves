@@ -5,12 +5,13 @@ import java.time.LocalDate
 
 fun main(args: Array<String>) {
     println ("Exercise 1")
-    val reversed = week_1.rev("hola")
-    println ( "word -> hola | rev -> $reversed")
+    val word = "murcielago"
+    val reversed = week_1.rev(word)
+    println ( "word -> $word | rev -> $reversed")
     // ---
     println ("Exercise 2")
-    val wordSize = week_1.sizes("murcielago")
-    println("word -> murcielago | size -> $wordSize")
+    val wordSize = week_1.sizes(word)
+    println("word -> $word | size -> $wordSize")
     // ---
     println ("Exercise 3")
     val ticket = week_1.Ticket(id="123", value=23, door="B 4")
@@ -23,22 +24,18 @@ fun main(args: Array<String>) {
     logger.error("se rompio el mundo")
     // ---
     println ("Exercise 5")
-    val status_ok = Status.APPROVED
-    val status_pend = Status.PENDING
-    val status_nope = Status.DENIED
-    println ("Status OK -> ${status_ok.toString()}")
-    println ("Status WAIT -> ${status_pend.toString()}")
-    println ("Status NO -> ${status_nope.toString()}")
+    println ("Status OK -> ${Status.APPROVED.toString()}")
+    println ("Status WAIT -> ${Status.PENDING.toString()}")
+    println ("Status NO -> ${Status.DENIED.toString()}")
     // ---
     println ("Exercise 6")
     val now = LocalDate.now()
-    val yesterday = LocalDate.now().minusDays(1)
-    val ticket_ok = getTicketOrNull(now)
-    val ticket_no = getTicketOrNull(yesterday)
-    println ("Ticket OK -> $ticket_ok")
-    println ("Ticket NULL -> $ticket_no")
+    val ticketOk = getTicketOrNull(now)
+    val ticketNull = getTicketOrNull(now.minusDays(1))
+    println ("Ticket OK -> $ticketOk")
+    println ("Ticket NULL -> $ticketNull")
     // ---
     println ("Exercise 7")
-    printTicketOrNotFound(ticket_ok)
-    printTicketOrNotFound(ticket_no)
+    printTicketOrNotFound(ticketOk)
+    printTicketOrNotFound(ticketNull)
 }

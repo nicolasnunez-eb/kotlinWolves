@@ -41,8 +41,7 @@ enum class LogLevel {
 
 object Logger {
     private fun log(level: LogLevel, message: String) {
-        val lvlName = level.name
-        println("[$lvlName] $message")
+        println("[${level.name}] $message")
     }
 
     fun debug(message: String) = this.log(LogLevel.DEBUG, message)
@@ -74,7 +73,7 @@ fun getTicketOrNull (eventDate: LocalDate) : Ticket? {
     return if (eventDate < LocalDate.now()) {
         null
     } else {
-        Ticket("123", 23, LocalDate.now().plusDays(1),"12 A" )
+        Ticket("123", 23, LocalDate.now().plusDays(1),"12 A")
     }
 }
 
