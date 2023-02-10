@@ -12,6 +12,15 @@
 2. Create a function that receives a list of dogs and return a list of dog names
 3. Create a function that receives a list of dogs return the old dogs (dogs with more than 10 years)
 4. Create a function that receives the title of a videogame and returns the videogame instance
+
 * The videogame class contains title, age, duration
+
 5. Create a function that receives a list of games and group them by their duration
 6. Create an extension function that makes a string printable like `"hello".print()`
+7. Create a factory methods for a customer...
+
+* A customer has the following attributes: experience which can be "LOW" - "HIGH"
+* We need two different type of factory methods: one for an inexperienced customer which can be `newbie` and another one
+  which can be `sage`
+8. Create a configuration class that you have to update its attributes after instantiation
+9. Create a function that create an email message from the arguments, validates it and then send it.[](https://docs.google.com/document/d/1wybviQriAiid9pQnKseb4hhJ0367S7VXG-tPWUXRczQ/edit#)
