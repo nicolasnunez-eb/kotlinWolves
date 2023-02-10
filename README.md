@@ -30,7 +30,7 @@
 * [Chapter 9 - Collections: Maps](https://typealias.com/start/kotlin-maps)
 * [Chapter 10 - Receivers and Extensions](https://typealias.com/start/kotlin-receivers-and-extensions)
   -- https://kotlinlang.org/docs/extensions.html
-* [Chapter 12 • Introduction to Interfaces](https://typealias.com/start/kotlin-interfaces)
+* [Chapter 12 - Introduction to Interfaces](https://typealias.com/start/kotlin-interfaces)
 
 2. [Also vs Let vs Apply vs Run vs With](https://medium.com/@fatihcoskun/kotlin-scoping-functions-apply-vs-with-let-also-run-816e4efb75f5)
 3. [Companion Objects](https://kotlinlang.org/docs/object-declarations.html#companion-objects)
