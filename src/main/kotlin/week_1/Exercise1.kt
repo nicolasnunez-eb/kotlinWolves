@@ -66,6 +66,14 @@ enum class Status {
         }
     }
 }
+fun getStatus(value: String) : Status {
+    return when (value) {
+        Status.APPROVED.toString() -> Status.APPROVED
+        Status.PENDING.toString() -> Status.PENDING
+        Status.DENIED.toString() -> Status.DENIED
+        else -> Status.DENIED
+    }
+}
 
 
 //6. Create a function that returns a ticket instance given a condition or null if that condition is not achieved

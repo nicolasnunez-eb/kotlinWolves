@@ -1,4 +1,5 @@
 import week_1.Status
+import week_1.getStatus
 import week_1.getTicketOrNull
 import week_1.printTicketOrNotFound
 import java.time.LocalDate
@@ -24,9 +25,15 @@ fun main(args: Array<String>) {
     logger.error("se rompio el mundo")
     // ---
     println ("Exercise 5")
-    println ("Status OK -> ${Status.APPROVED.toString()}")
-    println ("Status WAIT -> ${Status.PENDING.toString()}")
-    println ("Status NO -> ${Status.DENIED.toString()}")
+    val approvedStr = Status.APPROVED.toString()
+    val pendingStr = Status.PENDING.toString()
+    val deniedStr = Status.DENIED.toString()
+    val approved = getStatus(approvedStr)
+    val pending = getStatus(pendingStr)
+    val denied = getStatus(deniedStr)
+    println ("Status Approved -> toStr: $approved | fromStr -> ${approved}")
+    println ("Status Pending -> toStr: $pending | fromStr -> ${pending}")
+    println ("Status Denied -> toStr: $denied | fromStr -> ${denied}")
     // ---
     println ("Exercise 6")
     val now = LocalDate.now()
