@@ -49,3 +49,19 @@ class Event(private val id: Int) {
             return (id * 1007).toString()
         }
 }
+
+enum class Status(val displayName: String) {
+    LIVE("Live"),
+    DRAFT("Draft"),
+    CANCELLED("Cancelled"),
+}
+
+fun foo(status: Status?): String {
+    println(status?.displayName)
+    return when (status) {
+        Status.LIVE -> "pepito"
+        Status.DRAFT -> "another"
+        Status.CANCELLED -> "ll"
+        else -> "asd"
+    }
+}
