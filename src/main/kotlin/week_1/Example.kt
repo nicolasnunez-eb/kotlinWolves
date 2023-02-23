@@ -26,11 +26,22 @@ class Foo(val word: Word) {
 
 
 class Car(private val age: Int, private val model: String = "asdsa") {
+
+    constructor(age: Int) : this(age, "custom")
+
     fun blabla(title: String) {
         println(age)
         println(model)
         println(title)
     }
+}
+
+class Event(private val id: Int) {
+
+    val publicId: String
+        get() {
+            return (id * 1007).toString()
+        }
 }
 
 object Development {
@@ -42,13 +53,6 @@ object Development {
     }
 }
 
-class Event(private val id: Int) {
-
-    val publicId: String
-        get() {
-            return (id * 1007).toString()
-        }
-}
 
 enum class Status(val displayName: String) {
     LIVE("Live"),
