@@ -1,71 +1,108 @@
 package week_1
 
-class Word {
-    private fun wordLength(word: String): String {
-        val wordLength = word.length
-        val result = when {
-            wordLength < 5 -> "short"
-            wordLength in 5..9 -> "medium"
-            else -> "long"
-        }
-        return result
-    }
+import java.util.logging.Logger
 
-    fun print() {
-        println(wordLength(""))
-    }
+
+/*
+    Class attributes are defined between parenthesis either with `val` or `var`, the attribute name and its type
+    Attributes have access modifiers like private and protected as Java
+    If an attribute does not have an explicit access modifier it will be assumed as `public`
+*/
+
+class TV(val name: String, private var status: String, protected val age: Int) {
+    override fun toString(): String = "TV $name - $status - $age"
 }
 
 
-class Foo(val word: Word) {
+/*
+    We still can have attributes that are initialized internally and not from constructor
+*/
+class TV2(val name: String, private var status: String, protected val age: Int) {
+    private val display = "32 inch"
 
-    fun print() {
-        word.print()
-    }
+    override fun toString(): String = "TV $name - $status - $age - $display"
 }
 
 
-class Car(private val age: Int, private val model: String = "asdsa") {
-
-    constructor(age: Int) : this(age, "custom")
-
-    fun blabla(title: String) {
-        println(age)
-        println(model)
-        println(title)
-    }
+/*
+    Kotlin constructors support default values on their attributes
+*/
+class TV3(val name: String, private var status: String = "WORKING", val age: Int) {
+    override fun toString(): String = "TV $name - $status - $age"
 }
 
+
+/*
+    Kotlin classes support constructor overloading
+*/
+class TV4(val name: String, private var status: String, val age: Int) {
+    constructor(name: String) : this(name, "WORKING", 2012)
+    constructor(age: Int) : this("GENERIC TV", "WORKING", age)
+
+    override fun toString(): String = "TV $name - $status - $age"
+}
+
+
+/*
+    Kotlin classes are `final` by default, this means that by default every class cannot be inherited.
+    In order to enable a class to be inherited we need to use the `open` keyword on our classes.
+
+    If our parent class has a constructor that needs to receive parameters we have to pass them when
+    we inherit from them.
+ */
+
+open class Furniture(protected val age: Int)
+
+// Receiving age by constructor and passing through Furniture constructor
+class TV5(val name: String, age: Int) : Furniture(age) {
+    override fun toString(): String = "TV $name - $age"
+}
+
+// Setting a default age in Furniture constructor
+class TV6(val name: String) : Furniture(age = 2023) {
+    override fun toString(): String = "TV $name - $age"
+}
+
+
+/*
+    We can define attributes that doesn't have any value, instead these attributes are calculated using other
+    attributes
+*/
 class Event(private val id: Int) {
-
     val publicId: String
         get() {
             return (id * 1007).toString()
         }
 }
 
-object Development {
-    fun baz() {
-        val car = Car(20)
-        val event = Event(12)
-        event.publicId
-        car.blabla("asdasd")
+fun handleEvent(event: Event) {
+    println(event.publicId) // Accessing event publicId as it is an attribute
+}
+
+
+/*
+    If we need static members or methods on our classes we need to use companion object.
+    Inside the companion object structure we define every static member. By convention the companion
+    object goes at the end of the class
+*/
+
+class EventId(private val id: Int) {
+    init {
+        validateId(id)
     }
-}
 
+    val publicId: String
+        get() {
+            logger.info("Accessing public id")
+            return (id * 1007).toString()
+        }
 
-enum class Status(val displayName: String) {
-    LIVE("Live"),
-    DRAFT("Draft"),
-    CANCELLED("Cancelled"),
-}
+    companion object {
+        private val logger = Logger.getLogger(this::class.qualifiedName)
 
-fun foo(status: Status?): String {
-    println(status?.displayName)
-    return when (status) {
-        Status.LIVE -> "pepito"
-        Status.DRAFT -> "another"
-        Status.CANCELLED -> "ll"
-        else -> "asd"
+        fun validateId(id: Int) {
+            if (id % 1007 != 0)
+                throw IllegalArgumentException("Invalid")
+        }
     }
 }
