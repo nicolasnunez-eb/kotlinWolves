@@ -106,3 +106,30 @@ class EventId(private val id: Int) {
         }
     }
 }
+
+
+/*
+    `Objects` in kotlin are really useful. An object is basically a unique instance that runs in your application.
+    `Objects` cannot be instantiated (since they are already a unique instance)
+    or inherited, but they can implement interfaces or inherit from other classes.
+    `Objects` can have attributes but these must be initialized internally since `Objects` cannot be instantiated thus
+    they do not have constructors.
+ */
+
+interface DatabaseConnector {
+    fun connect(host: String, port: String)
+}
+
+object MySQLConnector : DatabaseConnector {
+    private val driver = "Custom driver"
+
+    override fun connect(host: String, port: String) {
+        println("Using driver $driver")
+        println("Connecting to DB $host:$port")
+    }
+
+    fun ping(host: String, port: String): Boolean {
+        println("Using driver $driver")
+        return true
+    }
+}
